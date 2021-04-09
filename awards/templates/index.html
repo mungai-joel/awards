@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container-fluid">
+    <div>
+        <h4 class="text-center heading">Sites</4>
+    </div>
+    <div class="row">
+        {% for image in all_images%}
+
+        <div class="col-md-4 main-page d-flex" style=" margin-top: 5px;">
+            <div class="card card-cascade wider flex-fill ">
+
+                <!-- Card image -->
+                <div class="view view-cascade overlay">
+                    <a data-toggle="modal" data-target="#{{image.id}}"><img class="card-img-top" src="{{image.image}}" alt="{{image.title}}"></a>
+                </div>
+                <!--Card content-->
+                <div class="card-body">
+
+                    <!--Title-->
+                    <h4 class="card-title">{{image.title}}</h4>
+                    <!--Text-->
+                    <p class="card-text">{{image.details}}</p>
+                    <p><a href="{{image.link}}">Live Project Link</a></p>
+
+                    <a href="{% url 'project_review' image.pk %}" class="btn btn-INFO btn-md" style="background-color:rgb(56, 85, 250);">Review Project</a>
+
+                </div>
+            </div>
+        </div>
+        <!--Modal: modalYT-->
+        <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <img class="embed-responsive-item" src="{{image.image}}" alt="Image Loading" style="margin:10px;" allowfullscreen>
+                </div>
+
+            </div>
+        </div>
+        <!--Modal: modalYT-->
+
+
+        {% empty %}
+        <div class="row">
+            <h1 class="text-center"> No Images Yet</h1>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Card deck -->
+    <div class="row">
+    </div>
+
+</div>
+{% endblock %}
