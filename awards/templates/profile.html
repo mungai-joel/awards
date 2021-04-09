@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container" style="margin-top:30px;">
+    <div class="row profile">
+        <div class="col-md-2">
+            {% if profile.profile_picture %}
+            <img src="{{profile.profile_picture}}" alt="{{user}}" class="img-responsive"> {% else %}
+            <img src="/media/prof_pics/Avatar.png" alt="No Profile Pic"> {% endif %}
+        </div>
+
+        <div class="col-md-4" style="margin-left:200px;margin-top:30px;">
+            <a href="{% url 'edit_profile' %}" class="btn btn-light">Edit Profile</a>
+            <h3>{{user}}</h3>
+        </div>
+
+        <div class="col-md-2">
+            <p style="margin-left:20px;margin-top: 30px;"><strong>Bio: </strong>{{profile.bio}}</p>
+            <p style="margin-left:20px;"><strong>Contact Info: </strong>{{profile.contact_info}}</p>
+        </div>
+
+    </div>
+    <div class="row" style="margin-top:30px;">
+        <div class="row">
+            <h3 class="text-center" style="margin-left:500px;">Projects</h3>
+        </div>
+        <!-- Card deck -->
+        <div class="card-deck">
+            {% for single_project in projects %}
+            <!-- Card -->
+            <div class="col-md-4">
+                <div class="card mb-3">
+
+                    <!--Card image-->
+                    <div class="view overlay">
+                        <img class="card-img-top" src="{{single_project.image}}" alt="{{single_project.title}}">
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Card deck -->
+
+    </div>
+</div>
+
+{% endblock %}
