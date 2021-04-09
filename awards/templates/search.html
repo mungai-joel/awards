@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container-fluid">
+
+    <div class="row heading" style="margin-left:20px;">
+        {% if projects%}
+        <h2>Found {{ projects|length }} projects of searched term {{message}}</h2>
+        {% else %}
+        <h2> Found no projects for the search term {{message}}</h2>
+        {% endif %}
+
+    </div>
+    <div class="row">
+        {% for project in projects %}
+
+        <div class="col-md-4 main-page d-flex" style=" margin-top: 10px;">
+            <div class="card card-cascade wider flex-fill ">
+
+                <!-- Card image -->
+                <div class="view view-cascade overlay">
+                    <img class="card-img-top" src="{{project.image}}" alt="{{project.title}}">
+
+                </div>
+                <!--Card content-->
+                <div class="card-body">
+
+                    <!--Title-->
+                    <h4 class="card-title">{{project.title}}</h4>
+                    <!--Text-->
+                    <p class="card-text">{{project.details}}</p>
+                    <p><a href="{{project.link}}">Live Project Link</a></p>
+                    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                    <button type="button" class="btn btn-danger btn-md">Review</button>
+
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="row">
+            <h1 class="text-center"> No Images Yet</h1>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
