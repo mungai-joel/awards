@@ -29,7 +29,7 @@ As a user of the website you will be able to:
 
 ### Installing
 
-*** To view the app.Visit -> [awards](/)
+*** To view the app.Visit -> [awards](https://zeawards.herokuapp.com/accounts/login/?next=/)
 * Step 1:
 Clone this repo: git clone https://github.com/mungai-joel/awards.git.
 * Step 2:
